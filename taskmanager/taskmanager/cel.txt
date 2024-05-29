@@ -1,0 +1,27 @@
+# myproject/celery.py
+from __future__ import absolute_import, unicode_literals
+import os
+from celery import Celery
+from celery.schedules import crontab
+# Устанавливаем модуль настроек Django для Celery
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
+
+app = Celery('myproject')
+
+# Используем строку здесь для того, чтобы работник не должен был сериализовать
+# конфигурационный объект при использовании Windows.
+app.config_from_object('django.conf:settings', namespace='CELERY')
+
+# Автоматически обнаруживаем задачи в приложениях Django.
+app.autodiscover_tasks()
+
+@app.task(bind=True)
+def debug_task(self):
+    print(f'Request: {self.request!r}')
+
+app.conf.beat_schedule = {
+    'disconnect_users_every_5_minutes': {
+        'task': 'myapp.tasks.disconnect_users',
+        'schedule': crontab(minute='*/5'),
+    },
+}

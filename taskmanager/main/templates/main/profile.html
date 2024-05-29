@@ -1,0 +1,23 @@
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>Созадть</h1>>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.login }}<br>
+        {{ form.password }}<br>
+
+<!--        <input type="text" placeholder="Введите логин" class="form-control"><br>-->
+<!--        <textarea type="text" placeholder="Введите логин" class="form-control"></textarea><br>-->
+        <button type="submit" class="btn btn-success">Добавить</button>
+        <span>{{ error }}</span>
+    </form>
+
+</body>
+</html>

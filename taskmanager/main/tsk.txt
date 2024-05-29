@@ -1,0 +1,22 @@
+# myapp/tasks.py
+from celery import shared_task
+from django.contrib.auth.models import User
+from django.contrib.sessions.models import Session
+from django.utils import timezone
+from .utils import generate_random_password
+
+@shared_task
+def disconnect_users():
+    now = timezone.now()
+    for session in Session.objects.filter(expire_date__lt=now):
+        data = session.get_decoded()
+        user_id = data.get('_auth_user_id')
+        if user_id:
+            try:
+                user = User.objects.get(pk=user_id)
+                new_password = generate_random_password()
+                user.set_password(new_password)
+                user.save()
+                session.delete()
+            except User.DoesNotExist:
+                continue
