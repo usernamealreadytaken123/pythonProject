@@ -17,7 +17,8 @@ def index(request):
 
 def about(request):
     return render(request, 'main/about.html')
-
+def book(request):
+    return render(request, 'main/book.html')
 
 
 def profile(request):
