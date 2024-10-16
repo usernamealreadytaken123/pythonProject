@@ -31,7 +31,7 @@
             padding: 1rem; /* Отступы внутри блока */
         }
         button {
-            background-color: #5cb85c;
+            background-color: #b85c5c;
             color: white;
             border: none;
             padding: 12px; /* Увеличен отступ для кнопок */
@@ -43,7 +43,7 @@
             transition: opacity 0.3s; /* Плавный эффект при наведении */
         }
         button#systemLoginButton {
-            background-color: #007bff;
+            background-color: #ff0000;
         }
         button:hover {
             opacity: 0.8; /* Изменено значение для лучшего эффекта */
