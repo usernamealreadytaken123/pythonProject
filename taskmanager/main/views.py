@@ -8,7 +8,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-
+import psycopg2
 
 
 def index(request):
@@ -61,3 +61,38 @@ def auth(request):
 @login_required
 def about(request):
     return render(request, 'main/about.html')
+def list_reg(request):
+    if request.method == 'POST':
+        # Получение данных из формы
+        name = request.POST.get("name")
+        time = request.POST.get("time")
+        stand = request.POST.get("stand")
+        work_type = request.POST.get("work_type")
+
+        # Подключение к базе данных
+        conn = psycopg2.connect(
+            dbname="list",
+            user="postgres",
+            password="123",
+            host="localhost",
+            port="5432"
+        )
+
+        try:
+            with conn:
+                with conn.cursor() as cursor:
+                    # SQL-запрос для вставки данных
+                    query = """
+                        INSERT INTO my_table_1 (name, time, stand, work_type)
+                        VALUES (%s, %s, %s, %s);
+                        """
+                    cursor.execute(query, (name, time, stand, work_type))
+
+            return HttpResponse("<h2>Данные успешно добавлены!</h2>")
+        except Exception as e:
+            return HttpResponse(f"<h2>Ошибка при добавлении данных: {e}</h2>")
+        finally:
+            conn.close()
+
+    return render(request, 'main/list_reg.html')  # Если GET-запрос, просто отображаем форму
+

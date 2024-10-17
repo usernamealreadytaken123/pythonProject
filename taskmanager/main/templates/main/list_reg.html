@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма для заполнения</title>
+</head>
+<body>
+    <h2>Заполните форму</h2>
+    <form action="list.py" method="post">
+        <label for="name">ФИО:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="time">Время:</label><br>
+        <input type="text" id="time" name="time" required><br><br>
+
+        <label for="stand">Номер стенда:</label><br>
+        <input type="text" id="stand" name="stand" required><br><br>
+
+        <label for="work_type">Тип работы:</label><br>
+        <textarea id="work_type" name="work_type" rows="4" cols="50" required></textarea><br><br>
+
+        <input type="submit" value="Отправить">
+    </form>
+</body>
+</html>

@@ -28,5 +28,6 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('auth/', views.auth, name='auth'),
     path('book/', views.book, name='book'),
+    path('list_reg/', views.list_reg, name='list_reg'),
 
 ]

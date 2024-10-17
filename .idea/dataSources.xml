@@ -15,11 +15,11 @@
       <jdbc-url>jdbc:sqlite:C:\Users\danil\OneDrive\Документы\GitHub\pythonProject\taskmanager\db.sqlite3</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="postgres" uuid="7693be91-0cfb-4bff-b0e2-65ffe1400979">
+    <data-source source="LOCAL" name="list" uuid="7693be91-0cfb-4bff-b0e2-65ffe1400979">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql:postgres</jdbc-url>
+      <jdbc-url>jdbc:postgresql:list</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
