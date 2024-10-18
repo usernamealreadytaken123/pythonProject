@@ -1,0 +1,128 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Изменен шрифт на более современный */
+    background-color: #e9ecef; /* Светло-серый фон для улучшения контраста */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px; /* Увеличен отступ для мобильных устройств */
+}
+
+h1 {
+    color: #343a40; /* Темный цвет заголовка */
+    text-align: center; /* Центрирование текста */
+    margin-bottom: 20px; /* Отступ под заголовком */
+}
+
+.container {
+    background: white; /* Белый фон для контейнера */
+    border-radius: 8px; /* Скругленные углы контейнера */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Тень для контейнера */
+    padding: 30px; /* Увеличенные отступы внутри контейнера */
+    width: 100%;
+    max-width: 800px; /* Ограничение ширины для больших экранов */
+}
+
+.form-signin {
+    flex: 1; /* Левый блок будет занимать доступное пространство */
+    margin-right: 20px; /* Отступ справа */
+}
+
+.stand-block {
+    background-color: #f8f9fa; /* Светлый фон для блока стенда */
+    border: 1px solid #ced4da; /* Более светлая граница блока */
+    border-radius: 0.5rem; /* Скругленные углы */
+    padding: 1.5rem; /* Увеличенные отступы внутри блока */
+    margin-bottom: 15px; /* Увеличенный отступ между стендами */
+    transition: transform 0.2s; /* Плавный эффект при наведении */
+}
+
+.stand-block:hover {
+    transform: translateY(-2px); /* Эффект при наведении на блок */
+}
+
+button {
+    background-color: #007bff; /* Синий цвет кнопок */
+    color: white;
+    border: none;
+    padding: 12px; /* Увеличенный отступ для кнопок */
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 16px; /* Размер шрифта для кнопок */
+    transition: background-color 0.3s, transform 0.2s; /* Плавные эффекты при наведении */
+}
+
+button:hover {
+    background-color: #0056b3; /* Более темный оттенок при наведении */
+    transform: translateY(-1px); /* Легкий эффект при наведении */
+}
+
+button:focus {
+    outline: none; /* Убираем стандартное выделение при фокусе */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Плавное выделение при фокусе */
+}
+
+
+
+/* Стили для страницы авторизации */
+
+.auth-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Современный шрифт */
+    background-color: #f0f2f5; /* Светло-серый фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Высота на весь экран */
+    margin: 0; /* Убираем стандартные отступы */
+    padding: 20px; /* Отступы для мобильных устройств */
+}
+
+.auth-page h1 {
+    color: #343a40; /* Темный цвет заголовка */
+    text-align: center; /* Центрирование текста */
+    margin-bottom: 20px; /* Отступ под заголовком */
+}
+
+.auth-page div {
+    background: white; /* Белый фон для формы */
+    border-radius: 8px; /* Скругленные углы */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Тень для формы */
+    padding: 30px; /* Отступы внутри формы */
+    width: 100%;
+    max-width: 400px; /* Максимальная ширина для формы */
+}
+
+.auth-page form {
+    display: flex;
+    flex-direction: column; /* Вертикальное выравнивание полей формы */
+}
+
+.auth-page p {
+    color: #000000; /* Цвет текста ошибки */
+    text-align: center; /* Центрирование текста ошибки */
+}
+
+.auth-page button {
+    background-color: #007bff; /* Синий цвет кнопок */
+    color: white; /* Цвет текста кнопок */
+    border: none; /* Убираем границы */
+    padding: 12px; /* Отступы для кнопок */
+    border-radius: 5px; /* Скругленные углы для кнопок */
+    cursor: pointer; /* Указатель курсора при наведении */
+    font-size: 16px; /* Размер шрифта для кнопок */
+    margin-top: 15px; /* Отступ сверху для кнопок */
+    transition: background-color 0.3s, transform 0.2s; /* Плавные эффекты при наведении */
+}
+
+.auth-page button:hover {
+    background-color: #0056b3; /* Более темный цвет при наведении */
+    transform: translateY(-1px); /* Эффект при наведении */
+}
+
+.auth-page button:focus {
+    outline: none; /* Убираем стандартное выделение при фокусе */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Плавное выделение при фокусе */
+}
