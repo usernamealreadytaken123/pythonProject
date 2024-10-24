@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .forms import UsersForm
-from .models import Users
+from .forms import UsersForm, TaskForm
+from .models import Users, Tasks
 # Create your views here.
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -61,7 +61,51 @@ def auth(request):
 @login_required
 def about(request):
     return render(request, 'main/about.html')
+
 def list_reg(request):
+    form = TaskForm()  # Создаем экземпляр формы для отображения
+
+    if request.method == 'POST':
+        form = TaskForm(request.POST)  # Получаем данные из формы
+        if form.is_valid():
+            name = form.cleaned_data.get('name')
+            time = form.cleaned_data.get('time')
+            stand = form.cleaned_data.get('stand')
+            work_type = form.cleaned_data.get('work_type')
+
+            try:
+                # Сохраняем данные во вторую базу данных
+                Tasks.objects.using('secondary').create(
+                    name=name,
+                    time=time,
+                    stand=stand,
+                    work_type=work_type
+                )
+                # Возвращаем успешный ответ
+                return render(request, 'main/list_reg.html', {
+                    'form': TaskForm(),  # Обнуляем форму после успешного добавления
+                    'success': 'Данные успешно добавлены во вторую базу данных!'
+                })
+            except Exception as e:
+                # Возвращаем ошибку при добавлении
+                return render(request, 'main/list_reg.html', {
+                    'form': form,
+                    'error': f"Ошибка при добавлении данных: {e}"
+                })
+
+    # Если GET-запрос, просто отображаем форму
+    return render(request, 'main/list_reg.html', {'form': form})
+
+
+
+
+
+
+
+
+
+
+'''def list_reg(request):
     if request.method == 'POST':
         # Получение данных из формы
         name = request.POST.get("name")
@@ -94,5 +138,4 @@ def list_reg(request):
         finally:
             conn.close()
 
-    return render(request, 'main/list_reg.html')  # Если GET-запрос, просто отображаем форму
-
+    return render(request, 'main/list_reg.html')  # Если GET-запрос, просто отображаем форму"'''
