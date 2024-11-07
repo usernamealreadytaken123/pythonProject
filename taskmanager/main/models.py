@@ -14,7 +14,7 @@ class Users(models.Model):
 
 class Tasks(models.Model):
     name = models.CharField('name', max_length=255)
-    time = models.CharField('time', max_length=255)
+    time = models.TimeField('time', max_length=255)
     stand = models.CharField('stand', max_length=255)
     work_type = models.CharField('work_type', max_length=255)
 

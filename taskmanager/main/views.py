@@ -8,8 +8,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from datetime import timedelta, datetime
 import psycopg2
-
+from datetime import timedelta, datetime
 
 def index(request):
     users = Users.objects.all()
@@ -74,6 +75,21 @@ def list_reg(request):
             work_type = form.cleaned_data.get('work_type')
 
             try:
+                # Получаем последнюю запись по времени
+                last_task = Tasks.objects.using('secondary').order_by('-time').first()
+
+                # Если есть предыдущая запись, проверяем разницу во времени
+                if last_task:
+                    # Рассчитываем разницу во времени между новой записью и последней
+                    time_difference = datetime.combine(datetime.today(), time) - datetime.combine(datetime.today(), last_task.time)
+
+                    # Если разница меньше 1.5 часов, возвращаем ошибку
+                    if time_difference < timedelta(hours=1, minutes=30):
+                        return render(request, 'main/list_reg.html', {
+                            'form': form,
+                            'error': 'Разница во времени между записями должна составлять минимум 1.5 часа.'
+                        })
+
                 # Сохраняем данные во вторую базу данных
                 Tasks.objects.using('secondary').create(
                     name=name,
@@ -81,6 +97,7 @@ def list_reg(request):
                     stand=stand,
                     work_type=work_type
                 )
+
                 # Возвращаем успешный ответ
                 return render(request, 'main/list_reg.html', {
                     'form': TaskForm(),  # Обнуляем форму после успешного добавления

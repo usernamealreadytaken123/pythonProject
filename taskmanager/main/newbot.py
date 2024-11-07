@@ -177,7 +177,7 @@ def get_var_statuses(day_number):
 def send_buttons(message,day_number):
 
     print('11', day_number)
-    var_statuses = get_var_statuses(day_nmber)
+    var_statuses = get_var_statuses(day_number)
 
     markup = types.InlineKeyboardMarkup(row_width=3)
     buttons = []
