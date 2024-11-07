@@ -97,12 +97,12 @@ def list_reg(request):
     return render(request, 'main/list_reg.html', {'form': form})
 
 
+def tasks_list(request):
 
-
-
-
-
-
+        # Извлекаем все задачи из базы данных
+    tasks = Tasks.objects.all()
+        # Передаем список задач в шаблон
+    return render(request, 'main/tasks_list.html', {'tasks': tasks})
 
 
 '''def list_reg(request):
