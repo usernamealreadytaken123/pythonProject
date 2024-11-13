@@ -21,10 +21,14 @@ from .import views
 
 
 urlpatterns = [
+    path('', views.auth, name='auth'),
 
-    path('', views.index, name='index'),
+    ##path('', views.index, name='index'),
     path('about/', views.about, name='about'),
     path('profile/', views.profile, name='profile'),
     path('auth/', views.auth, name='auth'),
+    path('book/', views.book, name='book'),
+    path('list_reg/', views.list_reg, name='list_reg'),
+    path('tasks_list/', views.tasks_list, name='tasks_list'),
 
 ]

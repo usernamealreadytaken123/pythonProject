@@ -11,3 +11,17 @@ class Users(models.Model):
     class Meta:
         verbose_name = 'user'
         verbose_name_plural = 'users'
+
+class Tasks(models.Model):
+    name = models.CharField('name', max_length=255)
+    time = models.TimeField('time', max_length=255)
+    stand = models.CharField('stand', max_length=255)
+    work_type = models.CharField('work_type', max_length=255)
+
+    def __str__(self):
+        return f"{self.name} - {self.work_type}"
+
+    class Meta:
+        verbose_name = 'task'
+        verbose_name_plural = 'tasks'
+        db_table = 'my_table_1'  # Указываем конкретное имя таблицы
