@@ -1,0 +1,16 @@
+{% load static %}
+
+<div class="container mt-5">
+
+    <h2>Регистрация задачи</h2>
+    {% if success %}
+        <div class="alert alert-success">{{ success }}</div>
+    {% elif error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</div>

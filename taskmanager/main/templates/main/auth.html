@@ -1,20 +1,26 @@
-<!-- profile.html -->
-<!DOCTYPE html>
-<html lang="en">
+{% load static %}
+
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'style/ZOV.css' %}" type="text/css">
 </head>
-<body>
-    <h1>Login</h1>
-    {% if error %}
-    <p>{{ error }}</p>
-    {% endif %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
+
+<body class="auth-page"> <!-- Добавлен класс для стилизации страницы авторизации -->
+    <div>
+        <h1>Авторизация</h1>
+        {% if error %}
+        <p>{{ error }}</p>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" aria-label="Войти">Войти</button>
+            <button id="systemLoginButton" type="button" aria-label="Войти через кабинет ТУСУРа">Войти через кабинет ТУСУРа</button>
+        </form>
+    </div>
 </body>
 </html>
