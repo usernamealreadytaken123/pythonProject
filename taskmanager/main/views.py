@@ -63,26 +63,32 @@ def auth(request):
 def about(request):
     return render(request, 'main/about.html')
 
+@login_required
 def list_reg(request):
+    user = request.user
     form = TaskForm()  # Создаем экземпляр формы для отображения
+    form.fields['name'].choices = [(user.username, user.username)]
 
     if request.method == 'POST':
         form = TaskForm(request.POST)  # Получаем данные из формы
+        form.fields['name'].choices = [(user.username, user.username)]
+
         if form.is_valid():
             name = form.cleaned_data.get('name')
-            time = form.cleaned_data.get('time')
+            time_str = form.cleaned_data.get('time')
             stand = form.cleaned_data.get('stand')
             work_type = form.cleaned_data.get('work_type')
 
             try:
                 # Получаем последнюю запись по времени
+                time_obj = datetime.strptime(time_str, "%H:%M").time()
                 last_task = Tasks.objects.using('secondary').order_by('-time').first()
 
                 # Если есть предыдущая запись, проверяем разницу во времени
                 if last_task:
                     # Рассчитываем разницу во времени между новой записью и последней
-                    time_difference = datetime.combine(datetime.today(), time) - datetime.combine(datetime.today(), last_task.time)
-
+                    time_difference = datetime.combine(datetime.today(), time_obj) - datetime.combine(datetime.today(),
+                                                                                                      last_task.time)
                     # Если разница меньше 1.5 часов, возвращаем ошибку
                     if time_difference < timedelta(hours=1, minutes=30):
                         return render(request, 'main/list_reg.html', {
@@ -93,7 +99,7 @@ def list_reg(request):
                 # Сохраняем данные во вторую базу данных
                 Tasks.objects.using('secondary').create(
                     name=name,
-                    time=time,
+                    time=time_obj,
                     stand=stand,
                     work_type=work_type
                 )
