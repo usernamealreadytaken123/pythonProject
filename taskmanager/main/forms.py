@@ -23,18 +23,18 @@ class TaskForm(ModelForm):
         widgets = {
             "name": TextInput(attrs={
                 "class": "form-control",
-                "placeholder": "Enter task name",
+                "placeholder": "Введите название задачи",
             }),
             "time": TextInput(attrs={
                 "class": "form-control",
-                "placeholder": "Enter time",
+                "placeholder": "Выберите время",
             }),
             "stand": TextInput(attrs={
                 "class": "form-control",
-                "placeholder": "Enter stand",
+                "placeholder": "Выберите стенд",
             }),
             "work_type": TextInput(attrs={
                 "class": "form-control",
-                "placeholder": "Enter work type",
+                "placeholder": "Выберите тип работы",
             }),
         }

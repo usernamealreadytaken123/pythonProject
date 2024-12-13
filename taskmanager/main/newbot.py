@@ -403,11 +403,5 @@ def show_reservation_info(call):
         bot.send_message(call.message.chat.id, "Информация о бронировании отсутствует.")
 
 
-
-
-
-
-
-
 # Start the bot
 bot.polling(none_stop=True)

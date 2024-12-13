@@ -114,16 +114,12 @@ def list_reg(request):
     return render(request, 'main/list_reg.html', {'form': form})
 
 
-
-
-
 def tasks_list(request):
     # Получаем все записи из таблицы Tasks
     tasks = Tasks.objects.using('secondary').all()
 
     # Передаем записи в шаблон
     return render(request, 'main/tasks_list.html', {'tasks': tasks})
-
 
 
 '''def list_reg(request):
