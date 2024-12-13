@@ -40,7 +40,7 @@
     margin-bottom: 15px;
     font-size: 1.8em;
     font-weight: bold;
-    color: #654595;
+    color: #3c388d;
 }
 
 /* Поля ввода */
@@ -61,8 +61,8 @@
 }
 
 .auth-page input:focus {
-    border-color: #654595;
-    box-shadow: 0 0 5px #4f3570;
+    border-color: #3c388d;
+    box-shadow: 0 0 5px #28225e;
     outline: none;
 }
 
@@ -71,7 +71,7 @@
     width: 100%;
     padding: 12px;
     font-size: 1em;
-    background-color: #654595;
+    background-color: #3c388d;
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -82,19 +82,19 @@
 }
 
 .auth-page button:hover {
-    background-color: #654595;
+    background-color: #3c388d;
 }
 
 /* Альтернативная кнопка */
 #systemLoginButton {
     background-color: transparent;
-    color: #654595;
-    border: 1px solid #523775;
+    color: #3c388d;
+    border: 1px solid #292469;
     transition: all 0.3s ease;
 }
 
 #systemLoginButton:hover {
-    background-color: #452f65;
+    background-color: #28225e;
     color: #fff;
 }
 
@@ -123,13 +123,13 @@
     display: inline-block;
     margin-top: 10px;
     text-decoration: none;
-    color: #654595;
+    color: #3c388d;
     font-size: 0.9em;
     transition: color 0.3s ease;
 }
 
 .auth-page a:hover {
-    color: #422d60;
+    color: #28225e;
     text-decoration: underline;
 }
 
