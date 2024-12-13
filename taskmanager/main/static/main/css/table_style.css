@@ -10,7 +10,7 @@ body {
 h1 {
     margin: 20px 0;
     font-size: 1.8rem;
-    color: #652580;
+    color: #9fc53a;
 }
 
 .schedule {
@@ -76,7 +76,7 @@ td {
 }
 
 .legend-item.teh_work {
-    background-color: #76c893;
+    background-color: #652580;
 }
 
 .legend-item.practice {
