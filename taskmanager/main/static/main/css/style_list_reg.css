@@ -78,6 +78,11 @@ button:hover {
     background-color: #628013;
 }
 
+.back-button {
+    margin-top: 20px; /* Отступ сверху */
+    text-align: center; /* Центрирование кнопки */
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
     .container {

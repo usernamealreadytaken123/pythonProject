@@ -82,3 +82,23 @@ td {
 .legend-item.practice {
     background-color: #81c4f4;
 }
+
+.back-button {
+    margin-top: 20px; /* Отступ сверху */
+    text-align: center; /* Центрирование кнопки */
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff; /* Белый текст */
+    background-color: #3e348f; /* Фиолетовый фон */
+    border-radius: 5px; /* Скруглённые углы */
+    text-decoration: none; /* Убрать подчёркивание */
+    transition: background-color 0.3s; /* Плавный переход цвета */
+}
+
+.button:hover {
+    background-color: #2a235f; /* Тёмный фиолетовый при наведении */
+}
