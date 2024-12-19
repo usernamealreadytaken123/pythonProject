@@ -86,9 +86,9 @@ DATABASES = {
         'NAME': 'list',
         'USER': 'postgres',
         'PASSWORD': '123',
-        'HOST': '192.168.6.105',
+        'HOST': '192.168.101.105',
         'PORT': '5432',  # или другой порт для базы данных
-    }
+    }   
 }
 
 # Password validation
