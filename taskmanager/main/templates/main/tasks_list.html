@@ -1,20 +1,17 @@
 {% load static %}
 
-<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Расписание занятий</title>
+    <link type="text/css" href="{% static 'main/css/table_style.css'%}" rel="stylesheet"/>
+</head>
+<body>
     <div class="back-button">
         <a href="{% url 'about' %}" class="button">Вернуться на главную</a>
     </div>
 
-    <title>Расписание занятий</title>
-    <link type="text/css" href="{% static 'main/css/table_style.css'%}" rel="stylesheet"/>
-
-</head>
-<body>
-    <h1>Расписание занятий группы "НОМЕР ГРУППЫ</h1>
+    <h1>Расписание занятий группы "НОМЕР ГРУППЫ"</h1>
 
     <div class="schedule">
         <table>
