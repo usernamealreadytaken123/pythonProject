@@ -68,10 +68,12 @@ def list_reg(request):
     user = request.user
     form = TaskForm()  # Создаем экземпляр формы для отображения
     form.fields['name'].choices = [(user.username, user.username)]
+    form.fields['stand'].choices = [(i, str(i)) for i in range(1, 6)]
 
     if request.method == 'POST':
         form = TaskForm(request.POST)  # Получаем данные из формы
         form.fields['name'].choices = [(user.username, user.username)]
+        form.fields['stand'].choices = [(i, str(i)) for i in range(1, 6)]
 
         if form.is_valid():
             name = form.cleaned_data.get('name')
@@ -82,19 +84,29 @@ def list_reg(request):
             try:
                 # Получаем последнюю запись по времени
                 time_obj = datetime.strptime(time_str, "%H:%M").time()
-                last_task = Tasks.objects.using('secondary').order_by('-time').first()
+                ##last_task = Tasks.objects.using('secondary').order_by('-time').first()
+                existing_task = Tasks.objects.using('secondary').filter(time=time_obj, stand=stand).first()
 
-                # Если есть предыдущая запись, проверяем разницу во времени
-                if last_task:
-                    # Рассчитываем разницу во времени между новой записью и последней
+                if existing_task:
+                    return render(request, 'main/list_reg.html', {
+                        'form': form,
+                        'error': f'Запись с таким временем {time_str} и стендом {stand} уже существует.'
+                    })
+                conflicting_tasks = Tasks.objects.using('secondary').filter(time=time_obj).exclude(stand=stand)
+                for last_task in conflicting_tasks:
                     time_difference = datetime.combine(datetime.today(), time_obj) - datetime.combine(datetime.today(),
                                                                                                       last_task.time)
+                # Если есть предыдущая запись, проверяем разницу во времени
+               ## if last_task:
+                    # Рассчитываем разницу во времени между новой записью и последней
+                 ##   time_difference = datetime.combine(datetime.today(), time_obj) - datetime.combine(datetime.today(),
+                                                                                                    ##  last_task.time)
                     # Если разница меньше 1.5 часов, возвращаем ошибку
-                    if time_difference < timedelta(hours=1, minutes=30):
-                        return render(request, 'main/list_reg.html', {
-                            'form': form,
-                            'error': 'Разница во времени между записями должна составлять минимум 1.5 часа.'
-                        })
+                   ## if time_difference < timedelta(hours=1, minutes=30) :
+                   ##     return render(request, 'main/list_reg.html', {
+                    ##        'form': form,
+                    ##        'error': 'Разница во времени между записями должна составлять минимум 1.5 часа.'
+                     ##   })
 
                 # Сохраняем данные во вторую базу данных
                 Tasks.objects.using('secondary').create(

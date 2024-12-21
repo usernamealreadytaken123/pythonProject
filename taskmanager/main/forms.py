@@ -15,7 +15,12 @@ def generate_time_choices():
         current = current.replace(hour=(current.hour + hours) % 24, minute=minutes)
     return times
 
-
+def generate_stands_choices():
+    """Генерирует список целых чисел от 1 до 4."""
+    stands = []
+    for i in range(1, 5):  # Генерируем числа от 1 до 4
+        stands.append(i)
+    return stands
 
 
 class UsersForm(ModelForm):
@@ -35,15 +40,13 @@ class UsersForm(ModelForm):
 class TaskForm(ModelForm):
     name = forms.ChoiceField(label="Имя пользователя")  # Динамически наполняем в представлении
     time = forms.ChoiceField(label="Время", choices=generate_time_choices())  # Предопределенные временные слоты
+    stand = forms.ChoiceField(label="Стенд", choices=[(i, str(i)) for i in range(1, 6)])  # Предопределенные временные слоты
 
     class Meta:
         model = Tasks
         fields = ["name", "time", "stand", "work_type"]
         widgets = {
-            "stand": forms.TextInput(attrs={
-                "class": "form-control",
-                "placeholder": "Введите стенд"
-            }),
+
             "work_type": forms.TextInput(attrs={
                 "class": "form-control",
                 "placeholder": "Введите тип работы"
