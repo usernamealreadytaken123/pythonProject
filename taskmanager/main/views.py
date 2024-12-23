@@ -10,7 +10,11 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from datetime import timedelta, datetime
 import psycopg2
+from psycopg2 import sql, connect
 from datetime import timedelta, datetime
+from django.db import connections
+import threading
+import time
 
 def index(request):
     users = Users.objects.all()
@@ -143,6 +147,36 @@ def tasks_list(request):
     return render(request, 'main/tasks_list.html', {'tasks': tasks})
 
 
+def update_stand_status_forever():
+    while True:
+        try:
+            # Текущее время
+            now = datetime.now()
+
+            # Используем вторичную базу данных
+            with connections['secondary'].cursor() as cursor:
+                # Установить статус None, если разница во времени (включая дату) больше 5 минут
+                cursor.execute("""
+                    UPDATE stand 
+                    SET status = %s 
+                    WHERE time < %s
+                """, [None, now - timedelta(minutes=5)])
+                cursor.execute("""
+                                    UPDATE stand 
+                                    SET status = %s 
+                                    WHERE time > %s
+                                """, ['active', now - timedelta(minutes=5)])
+                if cursor.rowcount > 0:
+                    print(f"Обновлено {cursor.rowcount} строк(и).")
+        except Exception as e:
+            print(f"Ошибка при работе с базой данных: {e}")
+
+        # Интервал между выполнениями (например, каждые 5 секунд)
+        time.sleep(5)
+
+
+
+        # Перенаправляем на другую страницу после обновления
 
 '''def list_reg(request):
     if request.method == 'POST':
