@@ -1,26 +1,41 @@
+<!-- main/templates/main/tasks_list.html -->
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
-    <title>Tasks List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список задач</title>
+    <link rel="stylesheet" href="{% static 'main/css/table_style.css' %}">  <!-- Подключите ваши стили -->
 </head>
 <body>
-    <h1>Tasks List</h1>
+    <h1>Список задач</h1>
     <table border="1">
-        <tr>
-            <th>Name</th>
-            <th>Time</th>
-            <th>Stand</th>
-            <th>Work Type</th>
-        </tr>
-        {% for task in tasks %}
+        <thead>
             <tr>
-                <td>{{ task.name }}</td>
-                <td>{{ task.time }}</td>
-                <td>{{ task.stand }}</td>
-                <td>{{ task.work_type }}</td>
+                <th>Имя</th>
+                <th>Время</th>
+                <th>Стенд</th>
+                <th>Тип работы</th>
             </tr>
-        {% endfor %}
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task.name }}</td>
+                    <td>{{ task.time }}</td>
+                    <td>{{ task.stand }}</td>
+                    <td>{{ task.work_type }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">Нет задач для отображения.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
     </table>
+    <div class="back-button">
+        <a href="{% url 'about' %}" class="button">Вернуться на главную</a>
+    </div>
 </body>
 </html>

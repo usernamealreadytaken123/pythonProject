@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    margin: 20px 0;
+    font-size: 1.8rem;
+    color: #9fc53a;
+}
+
+.schedule {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1200px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th, td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    font-size: 0.9rem;
+}
+
+th {
+    background-color: #9FC53A;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f1f3f5;
+}
+
+td {
+    height: 60px;
+}
+
+.teh_work {
+    background-color: #d4f8d4;
+    color: #222;
+    font-weight: bold;
+}
+
+.practice {
+    background-color: #b3e5fc;
+    color: #222;
+    font-weight: bold;
+}
+
+.legend {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    margin: 5px 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.legend-item.teh_work {
+    background-color: #3c388d;
+}
+
+.legend-item.practice {
+    background-color: #81c4f4;
+}
+
+.back-button {
+    margin-top: 20px; /* Отступ сверху */
+    text-align: center; /* Центрирование кнопки */
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff; /* Белый текст */
+    background-color: #3e348f; /* Фиолетовый фон */
+    border-radius: 5px; /* Скруглённые углы */
+    text-decoration: none; /* Убрать подчёркивание */
+    transition: background-color 0.3s; /* Плавный переход цвета */
+}
+
+.button:hover {
+    background-color: #2a235f; /* Тёмный фиолетовый при наведении */
+}

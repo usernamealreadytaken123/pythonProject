@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Добавить задачу</title>
+    <link rel="stylesheet" href="{% static 'main/css/style_list_reg.css' %}">
 </head>
 <body>
-    <h1>Добавить задачу</h1>
-    {% if success %}
-        <p style="color: green;">{{ success }}</p>
-    {% endif %}
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Добавить</button>
-    </form>
+    <div class="container">
+        <h2>Добавить задачу</h2>
+        {% if success %}
+            <p style="color: green;">{{ success }}</p>
+        {% endif %}
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Добавить</button>
+        </form>
+        <div class="back-button">
+            <a href="{% url 'about' %}" class="_button">Назад</a>
+        </div>
+    </div>
 </body>
 </html>

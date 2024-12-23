@@ -160,12 +160,12 @@ def update_stand_status_forever():
                     UPDATE stand 
                     SET status = %s 
                     WHERE time < %s
-                """, [None, now - timedelta(minutes=5)])
+                """, ['занят', now - timedelta(minutes=5)])
                 cursor.execute("""
                                     UPDATE stand 
                                     SET status = %s 
                                     WHERE time > %s
-                                """, ['active', now - timedelta(minutes=5)])
+                                """, ['свободен', now - timedelta(minutes=5)])
                 if cursor.rowcount > 0:
                     print(f"Обновлено {cursor.rowcount} строк(и).")
         except Exception as e:

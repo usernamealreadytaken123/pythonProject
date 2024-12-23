@@ -1,0 +1,120 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Стили для главных элементов */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Левая колонка */
+.col-md-6 {
+    flex: 1;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.main {
+    margin-top: 20px;
+}
+
+/* Кнопки */
+.btn {
+    padding: 15px;
+    font-size: 16px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    background-color: #3c388d;
+    color: #fff;
+    margin-bottom: 15px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #3c388d;
+}
+
+.btn-secondary {
+    background-color: #3c388d;
+}
+
+.btn-secondary:hover {
+    background-color: #232052;
+}
+
+.btn-primary {
+    background-color: #9FC53A;
+}
+
+.btn-primary:hover {
+    background-color: #628013;
+}
+
+/* Правая колонка */
+.align-items-start {
+    align-items: flex-start;
+}
+
+.stand-block {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stand-block h5 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.stand-block p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.stand-block button {
+    width: 100%;
+    padding: 10px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .col-md-6 {
+        flex: none;
+        width: 100%;
+    }
+}

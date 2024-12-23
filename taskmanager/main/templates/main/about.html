@@ -1,3 +1,5 @@
+{% load static %}
+
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -5,92 +7,50 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>О сайте</title>
-    <link rel="stylesheet" href="Style.css">
-</head>
+    <link type="text/css" href="{% static 'main/css/about_style.css'%}" rel="stylesheet"/>
 
-<style>
-     body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 10px; /* Отступ для мобильных устройств */
-        }
-        h1 {
-            color: #333;
-            text-align: center; /* Центрирование текста */
-            margin-bottom: 20px; /* Отступ под заголовком */
-        }
-        form {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 400px; /* Максимальная ширина для больших экранов */
-        }
-        p {
-            color: black;
-        }
-        stand-block {
-            background-color: #f8f9fa; /* Светлый фон для блока стенда */
-            border: 1px solid #dee2e6; /* Граница блока */
-            border-radius: 0.5rem; /* Скругленные углы */
-            padding: 1rem; /* Отступы внутри блока */
-        }
-        button {
-            background-color: #5cb85c;
-            color: white;
-            border: none;
-            padding: 12px; /* Увеличен отступ для кнопок */
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
-            font-size: 16px; /* Увеличен размер шрифта для кнопок */
-            transition: opacity 0.3s; /* Плавный эффект при наведении */
-        }
-        button#systemLoginButton {
-            background-color: #007bff;
-        }
-        button:hover {
-            opacity: 0.8; /* Изменено значение для лучшего эффекта */
-        }
-</style>
+</head>
 
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <main class="form-signin w-100 m-auto">
-<button class="btn btn-secondary w-100 py-2 mb-2 btn-lg" type="button" onclick="window.location.href='/list_reg';">
-    Запись
-</button>
+    <div class="row">
+        <!-- Левая колонка -->
+
+            <div class="col-md-6 d-flex flex-column">
+                <main class="form-signin w-100">
+                    <button class="btn btn-secondary w-100 py-2 mb-2 btn-lg" type="button" onclick="window.location.href='/list_reg';">
+                        Запись
+                    </button>
                     <button class="btn btn-secondary w-100 py-2 mb-2 btn-lg" type="button" onclick="window.location.href='/tasks_list';">
-    Расписание
-</button>
-                    <button class="btn btn-secondary w-100 py-2 mb-2 btn-lg" type="button">Данные о экспериментах</button>
+                        Расписание
+                    </button>
+                    <button class="btn btn-secondary w-100 py-2 mb-2 btn-lg" type="button">
+                        Данные о экспериментах
+                    </button>
                 </main>
             </div>
-            <div class="col-md-6 d-flex flex-column">
+
+            <!-- Правая колонка -->
+            <div class="col-md-6 d-flex flex-column align-items-start">
+
                 <div class="stand-block mb-3">
                     <h5>Стенд 1</h5>
                     <p>Статус: Свободен</p>
                     <button class="btn btn-primary" type="button">Соединение</button>
                 </div>
+
                 <div class="stand-block mb-3">
                     <h5>Стенд 2</h5>
                     <p>Статус: Свободен</p>
                     <button class="btn btn-primary" type="button">Соединение</button>
                 </div>
+
                 <div class="stand-block mb-3">
                     <h5>Стенд 3</h5>
                     <p>Статус: Свободен</p>
                     <button class="btn btn-primary" type="button">Соединение</button>
                 </div>
+
             </div>
         </div>
     </div>
